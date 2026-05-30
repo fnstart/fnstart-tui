@@ -1,0 +1,27 @@
+{
+  "name": "my-tui-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/main.ts",
+    "dev": "tsx watch src/main.ts --hsr",
+    "build": "tsc --pretty false",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test src/__tests__/*.test.ts"
+  },
+  "dependencies": {
+    "@rezi-ui/core": "0.1.0-alpha.72",
+    "@rezi-ui/node": "0.1.0-alpha.72"
+  },
+  "devDependencies": {
+    "@rezi-ui/jsx": "^0.1.0-alpha.72",
+    "@types/node": "^25.9.1",
+    "better-result": "^2.9.2",
+    "tsx": "^4.20.0",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
