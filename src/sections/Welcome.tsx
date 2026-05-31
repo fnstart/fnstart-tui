@@ -19,14 +19,12 @@ export default function Component() {
         !: Making this wasn't hard nor easy, just a lot of workarounds.
       </rezi.Text>
 
-      <rezi.Box border="single" width="full" height={3} px={1}>
+      <rezi.Box border="rounded" height={3} pl={2}>
         <rezi.MiniChart
-          width="full"
           variant="bars"
           values={[
-            { label: "TypeScript", value: 90, max: 100 },
-            { label: "Go", value: 70, max: 100 },
-            { label: "Rust", value: 55, max: 100 },
+            { label: "TypeScript", value: 95.9, max: 100 },
+            { label: "Javascript", value: 4.1, max: 100 },
           ]}
         />
       </rezi.Box>

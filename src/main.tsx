@@ -19,7 +19,7 @@ type PageName = "mouseinfo" | "intro" | "home";
 type State = {
   logo: typeof logo;
   screen: PageName;
-  section: SectionKey;
+  section: number;
 };
 
 type SectionKey = "welcome" | "tech";
@@ -65,13 +65,22 @@ class Section {
 
     return Result.ok(exists);
   }
+
+  static getKey(input: number): string {
+    const section = Section.list.find((_, index) => input === index);
+    if (section) {
+      return section?.key;
+    } else {
+      return "Unknown";
+    }
+  }
 }
 
 const app = createNodeApp<State>({
   initialState: {
     logo,
     screen: "home",
-    section: "welcome",
+    section: 1,
   },
 });
 
@@ -156,16 +165,20 @@ function IntroScreen({ state }: { state: State }) {
   );
 }
 
-function renderSection(key: string) {
-  const sectionArr = Section.fetch(key);
+function renderSection(input: number) {
+  const key = Section.getKey(input);
+  const sectionArr = key ? Section.fetch(key) : null;
 
-  if (sectionArr.isErr()) {
+  if (!sectionArr || sectionArr.isErr()) {
     return (
       <rezi.Box width="full" height="full" px={1}>
         <rezi.Text>
-          An error occured trying to fetch section: {sectionArr.error.type}
+          An error occured trying to fetch section:{" "}
+          {sectionArr ? sectionArr.error.type : "none"}
         </rezi.Text>
-        <rezi.Text wrap>VALUE: {sectionArr.error.key}</rezi.Text>
+        <rezi.Text wrap>
+          VALUE: {sectionArr ? sectionArr.error.key : "none"}
+        </rezi.Text>
       </rezi.Box>
     );
   } else {
@@ -183,7 +196,7 @@ function HomeScreen({ state }: { state: State }) {
               <rezi.Box
                 px={2}
                 borderStyle={{
-                  dim: state.section !== data.key,
+                  dim: Section.getKey(state.section) !== data.key,
                 }}
                 border="rounded"
               >
@@ -191,7 +204,7 @@ function HomeScreen({ state }: { state: State }) {
                   <rezi.Text>[{data.keybind}]</rezi.Text>
                   <rezi.Text
                     style={{
-                      dim: state.section !== data.key,
+                      dim: Section.getKey(state.section) !== data.key,
                     }}
                   >
                     {data.title}
@@ -267,7 +280,32 @@ app.keys({
   escape: () =>
     app.update((s) => ({
       ...s,
-      screen: "home",
+      screen: "intro",
+    })),
+
+  left: () =>
+    app.update((s) => ({
+      ...s,
+      section: Math.max(0, s.section - 1),
+    })),
+
+  right: () =>
+    app.update((s) => ({
+      ...s,
+      section: Math.min(Section.list.length - 1, s.section + 1),
+    })),
+
+  w: () => {
+    app.update((s) => ({
+      ...s,
+      section: 0,
+    }));
+  },
+
+  t: () =>
+    app.update((s) => ({
+      ...s,
+      section: 1,
     })),
 });
 
