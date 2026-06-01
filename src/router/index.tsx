@@ -1,40 +1,10 @@
-type RouterCreateArray = {
-  id: PageName;
-  component: () => Promise<any>;
-  fallback?: PageName;
-  middleware?: (object: RouterCreateArray) => boolean;
-  keybinding?: string;
-  active?: boolean;
-};
-
-type RouterState = {
-  bundles: Record<
-    string,
-    Record<
-      string,
-      {
-        config: RouterCreateArray;
-        render: (props: { app: NodeApp<State> }) => any;
-      }
-    >
-  >;
-};
-
-type RouterClass = {
-  id: string;
-  app: NodeApp<State> | undefined;
-  state: RouterState | undefined;
-  pages: RouterCreateArray[];
-  create: (components: RouterCreateArray[]) => void;
-  current: (state: State) => any;
-  page: PageName;
-};
-
 class Router implements RouterClass {
   id: string;
   app: RouterClass["app"] = undefined;
   state: RouterClass["state"] = undefined;
+  config: RouterClass["config"] = undefined;
   pages: RouterClass["pages"] = [];
+  junk: RouterClass["junk"] = {};
 
   create: RouterClass["create"] = (components) => {
     this.pages = components;
@@ -46,29 +16,28 @@ class Router implements RouterClass {
         .component()
         .then((module) => {
           const tryUpdate = () => {
-            if (this.app) {
-              try {
-                this.app.update((state) => {
-                  const newBundles = { ...state.bundles };
+            if (!this.app) return;
 
-                  if (!newBundles[this.id]) {
-                    newBundles[this.id] = {};
-                  }
+            try {
+              this.app.update((state) => {
+                const newBundles = { ...state.bundles };
+                const routerBucket = newBundles[this.id] ?? {};
 
-                  newBundles[this.id][data.id] = {
-                    config: data,
-                    render: module.default,
-                  };
+                routerBucket[data.id] = {
+                  config: data,
+                  render: module.default,
+                };
 
-                  return {
-                    ...state,
-                    bundles: newBundles,
-                  };
-                });
-              } catch (err: any) {
-                if (err && err.code === "ZRUI_INVALID_STATE") {
-                  setTimeout(tryUpdate, 10);
-                }
+                newBundles[this.id] = routerBucket;
+
+                return {
+                  ...state,
+                  bundles: newBundles,
+                };
+              });
+            } catch (err: any) {
+              if (err?.code === "ZRUI_INVALID_STATE") {
+                setTimeout(tryUpdate, 10);
               }
             }
           };
@@ -82,39 +51,42 @@ class Router implements RouterClass {
   };
 
   current: RouterClass["current"] = (state) => {
-    if (!state || !state.bundles) return null;
-    const routerBundles = state.bundles[this.id];
+    const routerBundles = state?.bundles?.[this.id];
     if (!routerBundles) return null;
 
-    let activeRenderFn: any = null;
+    const bundles = Object.values(routerBundles) as RouterBundle[];
+    const activeBundle = bundles.find((bundle) => bundle.config.active);
 
-    Object.values(routerBundles).forEach((bundle: any) => {
-      if (bundle && bundle.config && bundle.config.active) {
-        activeRenderFn = bundle.render;
-      }
-    });
-
-    return activeRenderFn;
+    return activeBundle?.render ?? null;
   };
 
-  set page(targetId: PageName) {
+  private getActivePageFromState(state: State): PageName | null {
+    const routerBundles = state?.bundles?.[this.id];
+    if (!routerBundles) return null;
+
+    const bundles = Object.values(routerBundles) as RouterBundle[];
+    const activeBundle = bundles.find((bundle) => bundle.config.active);
+
+    return activeBundle?.config.id ?? null;
+  }
+
+  private switchPage(targetId: PageName) {
     if (!this.app) return;
 
     this.app.update((state) => {
       const newBundles = { ...state.bundles };
-      const currentRouterBundles = { ...newBundles[this.id] };
+      const currentRouterBundles = { ...(newBundles[this.id] ?? {}) };
 
       Object.keys(currentRouterBundles).forEach((id) => {
-        const targetBundle = currentRouterBundles[id];
-        if (targetBundle && targetBundle.config) {
-          currentRouterBundles[id] = {
-            ...targetBundle,
-            config: {
-              ...targetBundle.config,
-              active: id === targetId,
-            },
-          };
-        }
+        const targetBundle = currentRouterBundles[id] as RouterBundle;
+
+        currentRouterBundles[id] = {
+          ...targetBundle,
+          config: {
+            ...targetBundle.config,
+            active: id === targetId,
+          },
+        };
       });
 
       newBundles[this.id] = currentRouterBundles;
@@ -127,13 +99,109 @@ class Router implements RouterClass {
     });
   }
 
-  get page(): PageName {
-    return "home";
+  go(targetId: PageName) {
+    if (!this.app) return;
+
+    this.app.update((state) => {
+      const currentId = this.getActivePageFromState(state);
+      const newBundles = { ...state.bundles };
+      const currentRouterBundles = { ...(newBundles[this.id] ?? {}) };
+
+      if (this.config?.saveOrder && currentId && currentId !== targetId) {
+        this.order = [...this.order, currentId];
+      }
+
+      Object.keys(currentRouterBundles).forEach((id) => {
+        const targetBundle = currentRouterBundles[id] as RouterBundle;
+
+        currentRouterBundles[id] = {
+          ...targetBundle,
+          config: {
+            ...targetBundle.config,
+            active: id === targetId,
+          },
+        };
+      });
+
+      newBundles[this.id] = currentRouterBundles;
+
+      return {
+        ...state,
+        bundles: newBundles,
+        version: state.version + 1,
+      };
+    });
   }
 
-  constructor(app: NodeApp<State>, routerId: string = "mainRouter") {
+  back() {
+    const previous = this.order.at(-1);
+    console.log(previous);
+    if (!previous || !this.app) return;
+
+    this.order = this.order.slice(0, -1);
+
+    this.app.update((state) => {
+      const newBundles = { ...state.bundles };
+      const currentRouterBundles = { ...(newBundles[this.id] ?? {}) };
+
+      Object.keys(currentRouterBundles).forEach((id) => {
+        const targetBundle = currentRouterBundles[id] as RouterBundle;
+
+        currentRouterBundles[id] = {
+          ...targetBundle,
+          config: {
+            ...targetBundle.config,
+            active: id === previous,
+          },
+        };
+      });
+
+      newBundles[this.id] = currentRouterBundles;
+
+      return {
+        ...state,
+        bundles: newBundles,
+        version: state.version + 1,
+      };
+    });
+  }
+
+  get currentPage(): PageName | null {
+    const bundles = this.state?.bundles?.[this.id];
+    if (!bundles) return null;
+
+    const activeBundle = (Object.values(bundles) as RouterBundle[]).find(
+      (bundle) => bundle.config.active,
+    );
+
+    return activeBundle?.config.id ?? null;
+  }
+
+  set page(targetId: PageName) {
+    console.log(targetId);
+    this.go(targetId);
+  }
+
+  set order(targetValue: PageName[]) {
+    this.junk["ORDER_JUNK"] = targetValue;
+  }
+
+  get order(): PageName[] {
+    if (!this.junk["ORDER_JUNK"]) {
+      this.junk["ORDER_JUNK"] = [];
+    }
+
+    return this.junk["ORDER_JUNK"];
+  }
+
+  constructor(
+    app: NodeApp<State>,
+    routerId: string = "mainRouter",
+    config: RouterConfig,
+  ) {
     this.app = app;
     this.id = routerId;
+    this.config = config;
   }
 }
 

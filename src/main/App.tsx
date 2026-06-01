@@ -54,7 +54,9 @@ const app = createNodeApp<State>({
   },
 });
 
-const route = new Router(app);
+const route = new Router(app, "MainRoute", {
+  saveOrder: true,
+});
 
 route.create([
   {
@@ -64,11 +66,16 @@ route.create([
   },
   {
     id: "Introduction",
-    component: () => import("@/main/pages/MouseInfo"),
+    component: () => import("@/main/pages/Introduction"),
+  },
+  {
+    id: "Home",
+    component: () => import("@/main/pages/Home"),
   },
 ]);
 
 app.view((state) => {
+  route.state = state;
   const ActivePageComponent = route.current(state);
 
   return (
@@ -92,7 +99,7 @@ app.keys({
   q: () => app.stop(),
 
   escape: () => {
-    route.page = "Introduction";
+    route.back();
   },
 
   left: () =>

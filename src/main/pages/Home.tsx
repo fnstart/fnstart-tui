@@ -1,8 +1,8 @@
 import * as rezi from "@rezi-ui/jsx";
 import { Result } from "better-result";
 
-import Welcome from "@/sections/Welcome";
-import Tech from "@/sections/Tech";
+import Welcome from "@/main/sections/Welcome";
+import Tech from "@/main/sections/Tech";
 
 class Section {
   static list: SectionArray[] = [
@@ -55,7 +55,7 @@ function renderSection(input: number) {
           {sectionArr ? sectionArr.error.type : "none"}
         </rezi.Text>
         <rezi.Text wrap>
-          VALUE: {sectionArr ? sectionArr.error.key : "none"}
+          VALUE: {sectionArr ? String(sectionArr.error.key) : "none"}
         </rezi.Text>
       </rezi.Box>
     );

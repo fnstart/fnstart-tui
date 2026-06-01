@@ -1,7 +1,9 @@
-import { type NodeApp as ReziNodeApp } from "@rezi-ui/node";
+import type { NodeApp as ReziNodeApp } from "@rezi-ui/node";
 
 declare global {
-  type PageName = "MouseInfo" | "Introduction" | "home";
+  type NodeApp<S> = ReziNodeApp<S>;
+
+  type PageName = "MouseInfo" | "Introduction" | "Home";
 
   type RouterCreateArray = {
     id: PageName;
@@ -12,26 +14,32 @@ declare global {
     active?: boolean;
   };
 
+  type RouterBundle = {
+    config: RouterCreateArray;
+    render: (props: {
+      app: NodeApp<State>;
+      state: State;
+      route: RouterClass;
+    }) => any;
+  };
+
   type RouterState = {
-    bundles: Record<
-      string,
-      Record<
-        string,
-        {
-          config: RouterCreateArray;
-          render: (props: { app: NodeApp<State> }) => any;
-        }
-      >
-    >;
+    bundles: Record<string, Record<string, RouterBundle>>;
+  };
+
+  type RouterConfig = {
+    saveOrder: boolean;
   };
 
   type RouterClass = {
     id: string;
     app: NodeApp<State> | undefined;
     state: RouterState | undefined;
+    config: RouterConfig | undefined;
     pages: RouterCreateArray[];
+    junk: Record<string, any>;
     create: (components: RouterCreateArray[]) => void;
-    current: () => any;
+    current: (state: State) => RouterBundle["render"] | null;
     page: PageName;
   };
 
@@ -41,13 +49,11 @@ declare global {
     route: RouterClass;
   };
 
-  type NodeApp<S> = ReziNodeApp<S>;
-
   type State = {
     logo: string[];
     section: number;
     version: number;
-    bundles: Record<string, any>;
+    bundles: RouterState["bundles"];
   };
 
   type SectionKey = "welcome" | "tech";
@@ -62,7 +68,7 @@ declare global {
 
   type SectionError = {
     type: SectionErrorTypes;
-    key: any;
+    key: unknown;
   };
 }
 
