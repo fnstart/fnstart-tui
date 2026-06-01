@@ -43,7 +43,7 @@ class Section {
   }
 }
 
-function renderSection(input: number) {
+function renderSection(input: number, app: NodeApp<State>, state: State) {
   const key = Section.getKey(input);
   const sectionArr = key ? Section.fetch(key) : null;
 
@@ -60,11 +60,11 @@ function renderSection(input: number) {
       </rezi.Box>
     );
   } else {
-    return <sectionArr.value.component />;
+    return <sectionArr.value.component app={app} state={state} />;
   }
 }
 
-export default function HomeScreen({ state }: PageComponent) {
+export default function HomeScreen({ app, state }: PageComponent) {
   return (
     <rezi.Column width="full" height="full" gap={1}>
       <rezi.Box flex={1} width="full" border="rounded">
@@ -92,7 +92,7 @@ export default function HomeScreen({ state }: PageComponent) {
             ))}
           </rezi.Row>
 
-          {renderSection(state.section)}
+          {renderSection(state.section, app, state)}
         </rezi.Column>
       </rezi.Box>
     </rezi.Column>

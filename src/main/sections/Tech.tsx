@@ -1,5 +1,6 @@
 import * as rezi from "@rezi-ui/jsx";
 import type { TextStyle } from "@rezi-ui/jsx";
+
 type Skill =
   | "Beginner"
   | "Advanced Beginner"
@@ -7,10 +8,16 @@ type Skill =
   | "Advanced"
   | "Expert";
 
+type StackModal = {
+  title?: string;
+  description: string;
+};
+
 type StackItem = {
   title: string;
   skill?: Skill;
   description?: string;
+  modal?: StackModal;
   titleStyle?: TextStyle;
   skillStyle?: TextStyle;
   descStyle?: TextStyle;
@@ -25,30 +32,61 @@ const stack: Stack = [
       bold: true,
       bg: 207234,
     },
+    modal: {
+      title: "Stack",
+      description: "This section lists my main languages and frameworks.",
+    },
   },
   {
     title: "Luau",
     skill: "Advanced",
+    modal: {
+      title: "Luau",
+      description: "Comfortable building larger Luau codebases and systems.",
+    },
   },
   {
     title: "VueJs",
     skill: "Advanced",
+    modal: {
+      title: "VueJs",
+      description: "Strong with component architecture and production UI work.",
+    },
   },
   {
     title: "TypeScript",
     skill: "Intermediate",
+    modal: {
+      title: "TypeScript",
+      description:
+        "Can build independently and adapt well across app codebases.",
+    },
   },
   {
     title: "Rust",
     skill: "Advanced Beginner",
+    modal: {
+      title: "Rust",
+      description:
+        "Can read, modify, and build smaller features with docs nearby.",
+    },
   },
   {
     title: "C++",
     skill: "Advanced Beginner",
+    modal: {
+      title: "C++",
+      description: "Can extend existing code with guidance and references.",
+    },
   },
   {
     title: "Python",
     skill: "Advanced Beginner",
+    modal: {
+      title: "Python",
+      description:
+        "Useful for scripts and tooling, with docs for bigger systems.",
+    },
   },
   {
     title: "Beginner",
@@ -59,6 +97,11 @@ const stack: Stack = [
     },
     descStyle: {
       dim: true,
+    },
+    modal: {
+      title: "Beginner",
+      description:
+        "I need guidance to start, but I can ramp up quickly from docs and examples.",
     },
   },
   {
@@ -71,6 +114,11 @@ const stack: Stack = [
     descStyle: {
       dim: true,
     },
+    modal: {
+      title: "Advanced Beginner",
+      description:
+        "I can follow and modify code, but I still rely on documentation to start from zero.",
+    },
   },
   {
     title: "Intermediate",
@@ -81,6 +129,11 @@ const stack: Stack = [
     },
     descStyle: {
       dim: true,
+    },
+    modal: {
+      title: "Intermediate",
+      description:
+        "I can build independently, solve common problems, and adapt quickly in most codebases.",
     },
   },
   {
@@ -93,6 +146,11 @@ const stack: Stack = [
     descStyle: {
       dim: true,
     },
+    modal: {
+      title: "Advanced",
+      description:
+        "I can design solid systems, make strong architecture decisions, and structure larger work confidently.",
+    },
   },
   {
     title: "Expert",
@@ -103,12 +161,21 @@ const stack: Stack = [
     descStyle: {
       dim: true,
     },
+    modal: {
+      title: "Expert",
+      description:
+        "I can lead, teach, and solve uncommon technical problems with confidence.",
+    },
   },
   {
     title: "Tools",
     titleStyle: {
       bold: true,
       bg: 542323,
+    },
+    modal: {
+      title: "Tools",
+      description: "These are the tools I use most often in my workflow.",
     },
   },
   {
@@ -117,12 +184,21 @@ const stack: Stack = [
     descStyle: {
       dim: true,
     },
+    modal: {
+      title: "Figma",
+      description:
+        "My main tool for interface design, layout planning, and UI/UX work.",
+    },
   },
   {
     title: "Zed Editor",
     description: "My primary tool for developing software.",
     descStyle: {
       dim: true,
+    },
+    modal: {
+      title: "Zed Editor",
+      description: "My main editor for writing and navigating code.",
     },
   },
   {
@@ -131,12 +207,21 @@ const stack: Stack = [
     descStyle: {
       dim: true,
     },
+    modal: {
+      title: "GitHub",
+      description:
+        "My main tool for repositories, version control, and collaboration.",
+    },
   },
   {
     title: "Operating Systems",
     titleStyle: {
       bold: true,
       bg: 812323,
+    },
+    modal: {
+      title: "Operating Systems",
+      description: "These are the operating systems I work with most often.",
     },
   },
   {
@@ -145,12 +230,21 @@ const stack: Stack = [
     descStyle: {
       dim: true,
     },
+    modal: {
+      title: "Windows",
+      description:
+        "My primary OS for Windows API and platform-specific development.",
+    },
   },
   {
     title: "Arch Linux",
     description: "My primary OS for daily development and usage.",
     descStyle: {
       dim: true,
+    },
+    modal: {
+      title: "Arch Linux",
+      description: "My main OS for daily development and general use.",
     },
   },
   {
@@ -159,10 +253,22 @@ const stack: Stack = [
     descStyle: {
       dim: true,
     },
+    modal: {
+      title: "Ubuntu",
+      description: "My go-to OS for server setup and deployment tasks.",
+    },
   },
 ];
 
-export default function Component() {
+export function getStackItem(index: number): StackItem | undefined {
+  return stack[index];
+}
+
+export function getStackLength(): number {
+  return stack.length;
+}
+
+export default function Tech({ state }: SectionProps) {
   return (
     <rezi.Column width="full" height="full" align="center" gap={0}>
       <rezi.VirtualList
@@ -172,29 +278,28 @@ export default function Component() {
         items={stack}
         itemHeight={2}
         overscan={2}
-        renderItem={({
-          title,
-          skill,
-          description,
-          titleStyle,
-          skillStyle,
-          descStyle,
-        }) => (
-          <rezi.Row width="full" gap={1} px={2}>
-            <rezi.Text style={titleStyle ? titleStyle : {}}>{title}</rezi.Text>
-            {skill && <rezi.Text>•</rezi.Text>}
-            {skill && (
-              <rezi.Text style={skillStyle ? skillStyle : {}}>
-                {skill}
-              </rezi.Text>
+        focusable={false}
+        keyboardNavigation={false}
+        selectionStyle={{}}
+        focusConfig={{ indicator: "none" }}
+        ensureVisibleIndex={state.techSelectedIndex}
+        ensureVisibleMode="always"
+        renderItem={(item: StackItem, index: number) => (
+          <rezi.Row
+            width="full"
+            gap={1}
+            px={2}
+            style={index === state.techSelectedIndex ? { inverse: true } : {}}
+          >
+            <rezi.Text style={item.titleStyle ?? {}}>{item.title}</rezi.Text>
+            {item.skill && <rezi.Text>•</rezi.Text>}
+            {item.skill && (
+              <rezi.Text style={item.skillStyle ?? {}}>{item.skill}</rezi.Text>
             )}
-            {description && <rezi.Text>•</rezi.Text>}
-            {description && (
-              <rezi.Text
-                textOverflow="ellipsis"
-                style={descStyle ? descStyle : {}}
-              >
-                {description}
+            {item.description && <rezi.Text>•</rezi.Text>}
+            {item.description && (
+              <rezi.Text textOverflow="ellipsis" style={item.descStyle ?? {}}>
+                {item.description}
               </rezi.Text>
             )}
           </rezi.Row>

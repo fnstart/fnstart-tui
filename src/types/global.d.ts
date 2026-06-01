@@ -3,7 +3,7 @@ import type { NodeApp as ReziNodeApp } from "@rezi-ui/node";
 declare global {
   type NodeApp<S> = ReziNodeApp<S>;
 
-  type PageName = "MouseInfo" | "Introduction" | "Home";
+  type PageName = "Support" | "Introduction" | "Home";
 
   type RouterCreateArray = {
     id: PageName;
@@ -53,20 +53,33 @@ declare global {
     route: RouterClass;
   };
 
+  type TechModal = {
+    open: boolean;
+    title: string;
+    description: string;
+  };
+
   type State = {
     logo: string[];
     section: number;
     version: number;
     bundles: RouterState["bundles"];
+    techModal: TechModal;
+    techSelectedIndex: number;
   };
 
   type SectionKey = "welcome" | "tech";
   type SectionErrorTypes = "NOT_A_STRING" | "INVALID_SECTION_KEY";
 
+  type SectionProps = {
+    app: NodeApp<State>;
+    state: State;
+  };
+
   type SectionArray = {
     key: SectionKey;
     title: string;
-    component: () => any;
+    component: (props: SectionProps) => any;
     keybind: string;
   };
 

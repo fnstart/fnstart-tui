@@ -1,6 +1,6 @@
 import * as rezi from "@rezi-ui/jsx";
 
-export default function IntroScreen({ app, state }: PageComponent) {
+export default function IntroScreen({ app, state, route }: PageComponent) {
   return (
     <rezi.Column
       width="full"
@@ -28,12 +28,7 @@ export default function IntroScreen({ app, state }: PageComponent) {
         id="continueFromIntro"
         label="Continue"
         intent="primary"
-        onPress={() =>
-          app.update((s) => ({
-            ...s,
-            screen: "home",
-          }))
-        }
+        onPress={() => (route.page = "Home")}
       />
     </rezi.Column>
   );

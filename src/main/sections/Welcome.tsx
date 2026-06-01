@@ -1,6 +1,6 @@
 import * as rezi from "@rezi-ui/jsx";
 
-export default function Component() {
+export default function Component(_props: SectionProps) {
   return (
     <rezi.Column
       width="full"
