@@ -99,7 +99,12 @@ app.keys({
   q: () => app.stop(),
 
   escape: () => {
-    route.back();
+    console.log("[keys] escape pressed");
+
+    setTimeout(() => {
+      console.log("[keys] deferred back()");
+      route.back();
+    }, 0);
   },
 
   left: () =>
@@ -108,6 +113,10 @@ app.keys({
     app.update((s) => ({ ...s, section: Math.min(1, s.section + 1) })),
   w: () => app.update((s) => ({ ...s, section: 0 })),
   t: () => app.update((s) => ({ ...s, section: 1 })),
+  b: () => {
+    console.log("[keys] b pressed");
+    route.back();
+  },
 });
 
 await app.start();

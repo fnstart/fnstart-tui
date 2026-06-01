@@ -1,6 +1,12 @@
 import * as rezi from "@rezi-ui/jsx";
 
-export default function MouseInfoScreen({ app, route }: PageComponent) {
+export default function MouseInfoScreen({ state, route }: PageComponent) {
+  console.log("[MouseInfoScreen] render", {
+    currentPage: route.currentPage,
+    order: route.order,
+    version: state.version,
+  });
+
   return (
     <rezi.Box border="none" width="full" height="full" alignSelf="center">
       <rezi.Box
@@ -25,11 +31,25 @@ export default function MouseInfoScreen({ app, route }: PageComponent) {
 
           <rezi.Row gap={1}>
             <rezi.Button
-              id="continueFromMouseInfo"
+              id={`continueFromMouseInfo-${state.version}`}
               label="Continue"
               intent="primary"
               onPress={() => {
+                console.log("[MouseInfoScreen] Continue pressed");
+                console.log(
+                  "[MouseInfoScreen] route.currentPage",
+                  route.currentPage,
+                );
+                console.log("[MouseInfoScreen] route.order", route.order);
+                console.log("[MouseInfoScreen] state.version", state.version);
                 route.page = "Introduction";
+              }}
+            />
+            <rezi.Button
+              id={`testButton-${state.version}`}
+              label="Test"
+              onPress={() => {
+                console.log("[MouseInfoScreen] Test pressed");
               }}
             />
           </rezi.Row>

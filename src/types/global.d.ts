@@ -41,6 +41,10 @@ declare global {
     create: (components: RouterCreateArray[]) => void;
     current: (state: State) => RouterBundle["render"] | null;
     page: PageName;
+    currentPage: PageName | null;
+    order: PageName[];
+    go: (targetId: PageName) => void;
+    back: () => void;
   };
 
   type PageComponent = {

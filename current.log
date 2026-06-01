@@ -1,0 +1,618 @@
+[2026-06-01T14:27:56.715Z] [Router:MainRoute] constructor {
+  "routerId": "MainRoute",
+  "config": {
+    "saveOrder": true
+  }
+}
+[2026-06-01T14:27:56.716Z] [Router:MainRoute] create() called [
+  "MouseInfo",
+  "Introduction",
+  "Home"
+]
+[2026-06-01T14:27:56.716Z] [Router:MainRoute] loading component MouseInfo
+[2026-06-01T14:27:56.716Z] [Router:MainRoute] loading component Introduction
+[2026-06-01T14:27:56.717Z] [Router:MainRoute] loading component Home
+[2026-06-01T14:27:56.720Z] [Router:MainRoute] component resolved MouseInfo
+[2026-06-01T14:27:56.720Z] [Router:MainRoute] create.update() error {
+  "code": "ZRUI_INVALID_STATE",
+  "message": "update: lifecycle operation already in flight"
+}
+[2026-06-01T14:27:56.720Z] [Router:MainRoute] component resolved Introduction
+[2026-06-01T14:27:56.720Z] [Router:MainRoute] create.update() error {
+  "code": "ZRUI_INVALID_STATE",
+  "message": "update: lifecycle operation already in flight"
+}
+[2026-06-01T14:27:56.725Z] [Router:MainRoute] component resolved Home
+[2026-06-01T14:27:56.725Z] [Router:MainRoute] create.update() error {
+  "code": "ZRUI_INVALID_STATE",
+  "message": "update: lifecycle operation already in flight"
+}
+[2026-06-01T14:27:56.734Z] [Router:MainRoute] create.update() error {
+  "code": "ZRUI_INVALID_STATE",
+  "message": "update: lifecycle operation already in flight"
+}
+[2026-06-01T14:27:56.734Z] [Router:MainRoute] create.update() error {
+  "code": "ZRUI_INVALID_STATE",
+  "message": "update: lifecycle operation already in flight"
+}
+[2026-06-01T14:27:56.739Z] [Router:MainRoute] create.update() error {
+  "code": "ZRUI_INVALID_STATE",
+  "message": "update: lifecycle operation already in flight"
+}
+[2026-06-01T14:27:56.745Z] [Router:MainRoute] create.update() error {
+  "code": "ZRUI_INVALID_STATE",
+  "message": "update: lifecycle operation already in flight"
+}
+[2026-06-01T14:27:56.745Z] [Router:MainRoute] create.update() error {
+  "code": "ZRUI_INVALID_STATE",
+  "message": "update: lifecycle operation already in flight"
+}
+[2026-06-01T14:27:56.751Z] [Router:MainRoute] create.update() error {
+  "code": "ZRUI_INVALID_STATE",
+  "message": "update: lifecycle operation already in flight"
+}
+[2026-06-01T14:27:56.756Z] [Router:MainRoute] create.update() error {
+  "code": "ZRUI_INVALID_STATE",
+  "message": "update: lifecycle operation already in flight"
+}
+[2026-06-01T14:27:56.756Z] [Router:MainRoute] create.update() error {
+  "code": "ZRUI_INVALID_STATE",
+  "message": "update: lifecycle operation already in flight"
+}
+[2026-06-01T14:27:56.762Z] [Router:MainRoute] create.update() error {
+  "code": "ZRUI_INVALID_STATE",
+  "message": "update: lifecycle operation already in flight"
+}
+[2026-06-01T14:27:56.767Z] [Router:MainRoute] current() -> no routerBundles
+[2026-06-01T14:27:56.785Z] [Router:MainRoute] create.update() before {
+  "dataId": "MouseInfo",
+  "bundleKeys": [],
+  "routeBucketKeys": []
+}
+[2026-06-01T14:27:56.785Z] [Router:MainRoute] create.update() after {
+  "dataId": "MouseInfo",
+  "routeBucketKeys": [
+    "MouseInfo"
+  ]
+}
+[2026-06-01T14:27:56.785Z] [Router:MainRoute] debugBundles [
+  {
+    "id": "MouseInfo",
+    "active": true
+  }
+]
+[2026-06-01T14:27:56.786Z] [Router:MainRoute] current() {
+  "active": "MouseInfo",
+  "available": [
+    {
+      "id": "MouseInfo",
+      "active": true
+    }
+  ]
+}
+[2026-06-01T14:27:56.786Z] [Router:MainRoute] order getter initialized history []
+[2026-06-01T14:27:56.786Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:27:56.786Z] [MouseInfoScreen] render {
+  "currentPage": "MouseInfo",
+  "order": [],
+  "version": 0
+}
+[2026-06-01T14:27:56.792Z] [Router:MainRoute] create.update() before {
+  "dataId": "Introduction",
+  "bundleKeys": [
+    "MainRoute"
+  ],
+  "routeBucketKeys": [
+    "MouseInfo"
+  ]
+}
+[2026-06-01T14:27:56.793Z] [Router:MainRoute] create.update() after {
+  "dataId": "Introduction",
+  "routeBucketKeys": [
+    "MouseInfo",
+    "Introduction"
+  ]
+}
+[2026-06-01T14:27:56.793Z] [Router:MainRoute] debugBundles [
+  {
+    "id": "MouseInfo",
+    "active": true
+  },
+  {
+    "id": "Introduction",
+    "active": false
+  }
+]
+[2026-06-01T14:27:56.793Z] [Router:MainRoute] create.update() before {
+  "dataId": "Home",
+  "bundleKeys": [
+    "MainRoute"
+  ],
+  "routeBucketKeys": [
+    "MouseInfo",
+    "Introduction"
+  ]
+}
+[2026-06-01T14:27:56.793Z] [Router:MainRoute] create.update() after {
+  "dataId": "Home",
+  "routeBucketKeys": [
+    "MouseInfo",
+    "Introduction",
+    "Home"
+  ]
+}
+[2026-06-01T14:27:56.793Z] [Router:MainRoute] debugBundles [
+  {
+    "id": "MouseInfo",
+    "active": true
+  },
+  {
+    "id": "Introduction",
+    "active": false
+  },
+  {
+    "id": "Home",
+    "active": false
+  }
+]
+[2026-06-01T14:27:56.793Z] [Router:MainRoute] current() {
+  "active": "MouseInfo",
+  "available": [
+    {
+      "id": "MouseInfo",
+      "active": true
+    },
+    {
+      "id": "Introduction",
+      "active": false
+    },
+    {
+      "id": "Home",
+      "active": false
+    }
+  ]
+}
+[2026-06-01T14:27:56.794Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:27:56.794Z] [MouseInfoScreen] render {
+  "currentPage": "MouseInfo",
+  "order": [],
+  "version": 0
+}
+[2026-06-01T14:27:57.791Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:58.240Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:58.417Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:58.567Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:58.696Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:58.812Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:58.930Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:59.059Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:59.171Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:59.314Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:59.421Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:59.554Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:59.660Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:59.795Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:27:59.903Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:28:00.042Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:28:00.165Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:28:00.306Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:28:00.417Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:28:00.538Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:28:00.660Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:28:00.787Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:28:00.952Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:28:01.037Z] [MouseInfoScreen] Test pressed
+[2026-06-01T14:28:01.808Z] [MouseInfoScreen] Continue pressed
+[2026-06-01T14:28:01.809Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:01.809Z] [MouseInfoScreen] route.currentPage MouseInfo
+[2026-06-01T14:28:01.809Z] [MouseInfoScreen] route.order []
+[2026-06-01T14:28:01.809Z] [MouseInfoScreen] state.version 0
+[2026-06-01T14:28:01.809Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:01.810Z] [Router:MainRoute] page setter {
+  "targetId": "Introduction",
+  "currentPageBefore": "MouseInfo",
+  "historyBefore": []
+}
+[2026-06-01T14:28:01.810Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:01.810Z] [Router:MainRoute] go() called {
+  "targetId": "Introduction",
+  "currentPageGetter": "MouseInfo",
+  "historyBefore": [],
+  "saveOrder": true
+}
+[2026-06-01T14:28:01.810Z] [Router:MainRoute] getActivePageFromState() {
+  "active": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:01.810Z] [Router:MainRoute] go().update() start {
+  "currentId": "MouseInfo",
+  "targetId": "Introduction",
+  "historyBefore": []
+}
+[2026-06-01T14:28:01.810Z] [Router:MainRoute] order setter {
+  "before": [],
+  "after": [
+    "MouseInfo"
+  ]
+}
+[2026-06-01T14:28:01.811Z] [Router:MainRoute] go().update() pushed history {
+  "pushed": "MouseInfo",
+  "historyAfterPush": [
+    "MouseInfo"
+  ]
+}
+[2026-06-01T14:28:01.811Z] [Router:MainRoute] getActivePageFromState() {
+  "active": "MouseInfo",
+  "history": [
+    "MouseInfo"
+  ]
+}
+[2026-06-01T14:28:01.811Z] [Router:MainRoute] setActivePageInState() before {
+  "targetId": "Introduction",
+  "routeBucketKeys": [
+    "MouseInfo",
+    "Introduction",
+    "Home"
+  ],
+  "activeBefore": "MouseInfo"
+}
+[2026-06-01T14:28:01.811Z] [Router:MainRoute] setActivePageInState() after {
+  "targetId": "Introduction",
+  "activeAfter": "Introduction",
+  "version": 1
+}
+[2026-06-01T14:28:01.811Z] [Router:MainRoute] debugBundles [
+  {
+    "id": "MouseInfo",
+    "active": false
+  },
+  {
+    "id": "Introduction",
+    "active": true
+  },
+  {
+    "id": "Home",
+    "active": false
+  }
+]
+[2026-06-01T14:28:01.811Z] [Router:MainRoute] currentPage getter {
+  "result": "Introduction",
+  "history": [
+    "MouseInfo"
+  ]
+}
+[2026-06-01T14:28:01.812Z] [Router:MainRoute] go().update() end {
+  "targetId": "Introduction",
+  "currentPageGetterAfter": "Introduction",
+  "historyAfter": [
+    "MouseInfo"
+  ]
+}
+[2026-06-01T14:28:01.812Z] [Router:MainRoute] current() {
+  "active": "Introduction",
+  "available": [
+    {
+      "id": "MouseInfo",
+      "active": false
+    },
+    {
+      "id": "Introduction",
+      "active": true
+    },
+    {
+      "id": "Home",
+      "active": false
+    }
+  ]
+}
+[2026-06-01T14:28:02.516Z] [keys] escape pressed
+[2026-06-01T14:28:02.520Z] [keys] deferred back()
+[2026-06-01T14:28:02.520Z] [Router:MainRoute] currentPage getter {
+  "result": "Introduction",
+  "history": [
+    "MouseInfo"
+  ]
+}
+[2026-06-01T14:28:02.520Z] [Router:MainRoute] back() called {
+  "previous": "MouseInfo",
+  "historyBefore": [
+    "MouseInfo"
+  ],
+  "currentPageGetter": "Introduction"
+}
+[2026-06-01T14:28:02.521Z] [Router:MainRoute] order setter {
+  "before": [
+    "MouseInfo"
+  ],
+  "after": []
+}
+[2026-06-01T14:28:02.521Z] [Router:MainRoute] back() consumed history {
+  "previous": "MouseInfo",
+  "historyAfterPop": []
+}
+[2026-06-01T14:28:02.521Z] [Router:MainRoute] getActivePageFromState() {
+  "active": "Introduction",
+  "history": []
+}
+[2026-06-01T14:28:02.521Z] [Router:MainRoute] back().update() start {
+  "previous": "MouseInfo",
+  "currentFromState": "Introduction",
+  "historyNow": []
+}
+[2026-06-01T14:28:02.521Z] [Router:MainRoute] getActivePageFromState() {
+  "active": "Introduction",
+  "history": []
+}
+[2026-06-01T14:28:02.521Z] [Router:MainRoute] setActivePageInState() before {
+  "targetId": "MouseInfo",
+  "routeBucketKeys": [
+    "MouseInfo",
+    "Introduction",
+    "Home"
+  ],
+  "activeBefore": "Introduction"
+}
+[2026-06-01T14:28:02.521Z] [Router:MainRoute] setActivePageInState() after {
+  "targetId": "MouseInfo",
+  "activeAfter": "MouseInfo",
+  "version": 2
+}
+[2026-06-01T14:28:02.522Z] [Router:MainRoute] debugBundles [
+  {
+    "id": "MouseInfo",
+    "active": true
+  },
+  {
+    "id": "Introduction",
+    "active": false
+  },
+  {
+    "id": "Home",
+    "active": false
+  }
+]
+[2026-06-01T14:28:02.522Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:02.522Z] [Router:MainRoute] back().update() end {
+  "previous": "MouseInfo",
+  "currentPageGetterAfter": "MouseInfo",
+  "historyAfter": []
+}
+[2026-06-01T14:28:02.522Z] [Router:MainRoute] current() {
+  "active": "MouseInfo",
+  "available": [
+    {
+      "id": "MouseInfo",
+      "active": true
+    },
+    {
+      "id": "Introduction",
+      "active": false
+    },
+    {
+      "id": "Home",
+      "active": false
+    }
+  ]
+}
+[2026-06-01T14:28:02.522Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:02.522Z] [MouseInfoScreen] render {
+  "currentPage": "MouseInfo",
+  "order": [],
+  "version": 2
+}
+[2026-06-01T14:28:06.256Z] [keys] b pressed
+[2026-06-01T14:28:06.256Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:06.257Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:06.257Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:06.446Z] [keys] b pressed
+[2026-06-01T14:28:06.446Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:06.446Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:06.446Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:06.586Z] [keys] b pressed
+[2026-06-01T14:28:06.586Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:06.586Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:06.586Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:06.741Z] [keys] b pressed
+[2026-06-01T14:28:06.741Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:06.741Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:06.741Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:06.882Z] [keys] b pressed
+[2026-06-01T14:28:06.882Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:06.882Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:06.882Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:07.008Z] [keys] b pressed
+[2026-06-01T14:28:07.008Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:07.009Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:07.009Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:07.152Z] [keys] b pressed
+[2026-06-01T14:28:07.153Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:07.153Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:07.153Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:07.287Z] [keys] b pressed
+[2026-06-01T14:28:07.288Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:07.288Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:07.288Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:07.436Z] [keys] b pressed
+[2026-06-01T14:28:07.437Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:07.437Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:07.437Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:07.558Z] [keys] b pressed
+[2026-06-01T14:28:07.559Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:07.559Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:07.559Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:07.713Z] [keys] b pressed
+[2026-06-01T14:28:07.713Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:07.713Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:07.714Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:07.853Z] [keys] b pressed
+[2026-06-01T14:28:07.853Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:07.853Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:07.853Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:07.987Z] [keys] b pressed
+[2026-06-01T14:28:07.987Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:07.987Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:07.987Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:08.127Z] [keys] b pressed
+[2026-06-01T14:28:08.127Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:08.127Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:08.127Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
+[2026-06-01T14:28:08.276Z] [keys] b pressed
+[2026-06-01T14:28:08.276Z] [Router:MainRoute] currentPage getter {
+  "result": "MouseInfo",
+  "history": []
+}
+[2026-06-01T14:28:08.276Z] [Router:MainRoute] back() called {
+  "historyBefore": [],
+  "currentPageGetter": "MouseInfo"
+}
+[2026-06-01T14:28:08.276Z] [Router:MainRoute] back() aborted {
+  "hasPrevious": false,
+  "hasApp": true
+}
