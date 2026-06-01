@@ -4,11 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "tsx src/main.ts",
-    "dev": "tsx watch src/main.ts --hsr",
+    "start": "tsx src/main/App.tsx",
+    "dev": "bun --watch src/main/App.tsx",
     "build": "tsc --pretty false",
-    "typecheck": "tsc --noEmit",
-    "test": "tsx --test src/__tests__/*.test.ts"
+    "tc": "tsc --noEmit"
   },
   "dependencies": {
     "@rezi-ui/core": "0.1.0-alpha.72",

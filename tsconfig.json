@@ -6,12 +6,17 @@
     "strict": true,
     "jsx": "react-jsx",
     "jsxImportSource": "@rezi-ui/jsx",
-    "types": ["bun-types", "node"],
+    "types": ["node"],
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
     "noPropertyAccessFromIndexSignature": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+    },
   },
+  "include": ["src/**/*"],
 }
