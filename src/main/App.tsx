@@ -61,7 +61,7 @@ const app = createNodeApp<State>({
       "   ███ █████████ ███   ",
       " ████             ████ ",
     ],
-    section: 1,
+    section: 0,
     version: 0,
     bundles: {},
     techModal: {
@@ -80,6 +80,7 @@ const route = new Router(app, "MainRoute", {
 route.create([
   {
     id: "Support",
+    active: true,
     component: () => import("@/main/pages/SupportPage"),
   },
   {
@@ -89,7 +90,6 @@ route.create([
   {
     id: "Home",
     component: () => import("@/main/pages/Home"),
-    active: true,
   },
 ]);
 
@@ -146,15 +146,14 @@ app.view((state) => {
 });
 
 app.keys({
-  "ctrl+c": () => {
-    route.page = "Support";
+  "ctrl+x": () => {
+    route.back();
   },
   escape: () => {
     app.update((s) => {
       if (s.techModal.open) {
         return { ...s, techModal: { ...s.techModal, open: false } };
       }
-      route.back();
       return s;
     });
   },

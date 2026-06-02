@@ -18,15 +18,14 @@ export default function SupportPage({ state, route }: PageComponent) {
           <rezi.Box height={1} />
 
           <rezi.Text>Controls:</rezi.Text>
-          <rezi.Text>├ Enter: Continue to the next screen.</rezi.Text>
-          <rezi.Text>├ Escape: Go back.</rezi.Text>
+          <rezi.Text>├ CTRL+X: Go back.</rezi.Text>
           <rezi.Text>
             ├ Tab: Focus the next control or the first row in a list.
           </rezi.Text>
           <rezi.Text>├ Left / Right: Switch sections in Home.</rezi.Text>
           <rezi.Text>├ W: Jump to Welcome.</rezi.Text>
           <rezi.Text>├ T: Jump to Tech.</rezi.Text>
-          <rezi.Text>└ Ctrl+C: Return to this help screen.</rezi.Text>
+          <rezi.Text>└ Enter: Continue to the next screen.</rezi.Text>
 
           <rezi.Box height={1} />
 
